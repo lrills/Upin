@@ -1,16 +1,19 @@
 {
-  "name": "Page Redder",
-  "description": "Make the current page red",
-  "version": "2.0",
-  "permissions": [
-    "activeTab"
-  ],
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": true
+ "background": {
+  "scripts": ["background.js"]
+ },
+ "manifest_version": 2,
+ "name": "MyExtension",
+ "version": "1.0",
+ "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
   },
-  "browser_action": {
-    "default_title": "Make this page red"
-  },
-  "manifest_version": 2
+ "description": "Gotta catch Youtube events!",
+ "permissions": ["tabs","<all_urls>", "http://*/*/"],
+ "content_scripts" : [{
+    "matches" : [ "https://www.youtube.com/*"],
+    "js" : ["content.js"]
+ }],
+"web_accessible_resources": ["inject.js"]
 }
